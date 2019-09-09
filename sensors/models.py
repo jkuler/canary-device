@@ -20,7 +20,7 @@ class Device(models.Model):
     sensor_reading_time = UnixDateTimeField(default=timezone.now)
 
     def __str__(self):
-        return '{:12}, {}'.format(self.device_uuid, self.sensor_value)
+        return '{}'.format(self.device_uuid)
 
 
 

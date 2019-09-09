@@ -15,9 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import include
 from sensors.views import TemplateHome
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
+    path('sensors/', include('sensors.urls')),
     path('', TemplateHome.as_view(), name='home-page'),
+
 ]

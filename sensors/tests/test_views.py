@@ -1,8 +1,13 @@
-from django.test import TestCase, SimpleTestCase
+from django.test import tag, TestCase, SimpleTestCase
+from django.utils.timezone import now
 from django.urls import resolve
-from sensors.views import TemplateHome
-from django.test.client import RequestFactory
+from sensors.models import Device
 from django.urls.base import reverse
+
+from rest_framework.test import APIClient
+from rest_framework.parsers import JSONParser
+from django.utils.six import BytesIO
+from unittest.mock import patch, Mock
 
 
 def setup_view_callable(view, request, *args, **kwargs):
@@ -30,6 +35,27 @@ class FTTest_HomePage(SimpleTestCase):
         self.assertEqual(response.status_code, 200)
         html = response.content.decode('utf8')
         self.assertIn('<title>sensors app</title>', html)
+
+
+class Sensor_API_Test(TestCase):
+    def setUp(self):
+        super().setUp()
+        device0 = Device(sensor_value=50.0)
+        device0.save()
+        device1 = Device(sensor_value=89.0, sensor_reading_time=now())
+        device1.save()
+        self.first = device0
+
+    def test_Can_Device_Retrieve_data(self):
+        client = APIClient()
+        response = client.get(f'/sensors/devices/')
+        self.assertEqual(response.status_code, 200)
+        stream = BytesIO(response.content)
+        data = JSONParser().parse(stream)
+        self.assertEqual(len(data), 2)
+
+
+
 
 
 
