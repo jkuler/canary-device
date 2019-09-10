@@ -46,14 +46,13 @@ class SensorViewSet(ModelViewSet):
 
 
 class DeviceTimeFilter(django_filters.FilterSet):
-    device_uuid = django_filters.UUIDFilter(field_name='device_uuid', lookup_expr='exact')
     sensor_type = django_filters.CharFilter(field_name='sensor_type', lookup_expr='exact')
     start_time = django_filters.DateTimeFilter(field_name='sensor_reading_time', lookup_expr='gte')
     end_time = django_filters.DateTimeFilter(field_name='sensor_reading_time', lookup_expr='lte')
 
     class Meta:
         model = Device
-        fields = ['device_uuid', 'sensor_type', 'start_time', 'end_time']
+        fields = ['sensor_type', 'start_time', 'end_time']
 
 
 class DeviceRetrieveTimeRangeViewSet(ModelViewSet):
