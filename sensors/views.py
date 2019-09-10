@@ -1,13 +1,14 @@
 from django.shortcuts import render
-from django.http import Http404
 from .models import Device
-from .serializers import DeviceSerializer
+from .serializers import DeviceSerializer, DeviceTimeSerializer
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from django.views.generic import TemplateView
 from django.views.generic import View
 from django.http import HttpResponse
+from django_filters import rest_framework as filters
+import django_filters
 # Create your views here.
 
 
@@ -39,22 +40,27 @@ class SensorViewSet(ModelViewSet):
     """
      POST and PUT : create and update
     """
-
     queryset = Device.objects.all()
     serializer_class = DeviceSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
 
-    def create(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        self.perform_create(serializer)
-        headers = self.get_success_headers(serializer.data)
-        return Response(
-            {
-             'message': 'device status set',
-             'device_uuid': serializer.data['device_uuid']
-            },
-            status=status.HTTP_201_CREATED, headers=headers)
 
+class DeviceTimeFilter(django_filters.FilterSet):
+    device_uuid = django_filters.UUIDFilter(field_name='device_uuid', lookup_expr='exact')
+    sensor_type = django_filters.CharFilter(field_name='sensor_type', lookup_expr='exact')
+    start_time = django_filters.DateTimeFilter(field_name='sensor_reading_time', lookup_expr='gte')
+    end_time = django_filters.DateTimeFilter(field_name='sensor_reading_time', lookup_expr='lte')
+
+    class Meta:
+        model = Device
+        fields = ['device_uuid', 'sensor_type', 'start_time', 'end_time']
+
+
+class DeviceRetrieveTimeRangeViewSet(ModelViewSet):
+    queryset = Device.objects.all()
+    serializer_class = DeviceTimeSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_class = DeviceTimeFilter
 
 
 

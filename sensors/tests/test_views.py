@@ -54,6 +54,17 @@ class Sensor_API_Test(TestCase):
         data = JSONParser().parse(stream)
         self.assertEqual(len(data), 2)
 
+    def test_Can_Retrieve_one_record(self):
+        device = Device.objects.all()[0]
+        client = APIClient()
+        uuids = str(device)[:]
+        response = client.get(f'/sensors/devices/{uuids}/')
+        self.assertEqual(response.status_code, 200)
+        stream = BytesIO(response.content)
+        data = JSONParser().parse(stream)
+        self.assertEqual(len(data), 4)
+
+
 
 
 

@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'django_filters',
     'sensors',
+
 ]
 
 MIDDLEWARE = [
@@ -52,13 +54,15 @@ MIDDLEWARE = [
 ]
 
 REST_FRAMEWORK = {
-    'DATETIME_FORMAT': "%s%f",
+    'DATETIME_FORMAT': "%Y-%m-%dT%H:%M:%S",
     'DEFAULT_PERMISSION_CLASSES': (
          'rest_framework.permissions.AllowAny',
     ),
     'DEFAULT_THROTTLE_CLASSES': [
-        'rest_framework.throttling.AnonRateThrottle'
+        'rest_framework.throttling.AnonRateThrottle',
     ],
+    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
+    'EXCEPTION_HANDLER': 'rest_framework.views.exception_handler',
     'DEFAULT_THROTTLE_RATES': {
         'anon': '60/minute'
     }
@@ -116,13 +120,23 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+DATETIME_INPUT_FORMATS: [
+ '%Y-%m-%dT%H:%M:%S'
+ '%Y-%m-%d %H:%M:%S',
+ '%Y-%m-%d %H:%M:%S.%f',  # '2006-10-25 14:30:59.000200'
+ '%Y-%m-%d %H:%M',        # '2006-10-25 14:30'
+ '%m/%d/%Y %H:%M:%S',     # '10/25/2006 14:30:59'
+ '%m/%d/%Y %H:%M:%S.%f',  # '10/25/2006 14:30:59.000200'
+ '%m/%d/%Y %H:%M',        # '10/25/2006 14:30'
+]
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/New_York'
 
 USE_I18N = True
 

@@ -1,18 +1,20 @@
 from django.conf.urls import url, include
 from sensors import views
-from .views import SensorViewSet, SimpleHelloWorld
+from .views import SensorViewSet, DeviceRetrieveTimeRangeViewSet
 from rest_framework.urlpatterns import format_suffix_patterns
 from django.urls import path
 from rest_framework import routers
 
 router = routers.DefaultRouter()
-router.register(r'devices', SensorViewSet)
+router.register(r'devices', SensorViewSet, base_name='devices')
+router.register(r'retrieve', DeviceRetrieveTimeRangeViewSet, base_name='retrieve-devices')
+
 
 urlpatterns = [
-    path('', SimpleHelloWorld.as_view(), name='hello-view'),
     url(r'^', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls')),
 
 ]
+
 
 
