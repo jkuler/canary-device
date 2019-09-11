@@ -8,7 +8,7 @@ The following graphic describes an integration infrastructure design where the a
 </div>
 
 ## Installing packages
-Before running , we need to install required packages from which application component has been built.
+Before running , we need to install required packages on top of which application components have been built.
 ``` bash
 # Clone the repository
 $ git clone https://github.com/jkuler/canary-device.git sensorsdev
