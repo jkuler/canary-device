@@ -128,15 +128,53 @@ Notice we have just created a new record using two fields:
 #### Simulating concurrent data upload
 To simulate concurrent requests with constraint on data upload, we create a http client script 
 using a python coroutine module for http client and service called aiohttp.
-To see how it works, we need first to generate 10 sensor value (s) with random sensor_type 
+To see how it works, we need first to generate 10 sensor value(s) with random sensor_type 
 
-##### Open a new terminal window and type the following ..
+##### Open a new terminal window to keep the application running ...
 
 ``` bash
-# at the project root : sensordev, type the following command
+# at the project root (sensorsdev), type the following command
 (virualenv)youser@hostname:~$ ./virtualenv/bin/python http_client.py -n 10 --url http://localhost:8000/sensors/devices/
 ```
+The preceding command generates random temperature and create 10 records on database.
+Now, let check to make sure we now have records in the database
 
+```bash
+  # the following returns a json non pretty array of objects
+  curl -X GET http://localhost:8000/sensors/devices/
+```
+
+We can also check directly from django shell 
+##### Open a new terminal to check number of the records 
+```bash
+(virualenv)youser@hostname:~$ ./virtualenv/bin/python manage.py shell
+>>> from sensors.model import Device
+>>> check_length = Device.objects.all()
+>>> len(check_length)
+>>> 11
+```
+
+### Checking Data Constraint on field sensor_value
+the application functionality restricts sensor_value between 0.0 to 100.0.
+Let check it out and see what's happened
+```bash
+ curl -X POST -H "Content-Type: application/json" -d  \
+ '{"sensor_value": 100.0, "sensor_type": "temperature"}' http://localhost:8000/sensors/devices/
+```
+Great, we can create new record with sensor_value equals to 100.0. what about 100.1 ?
+
+```bash
+  curl -X POST -H "Content-Type: application/json" -d \
+  '{"sensor_value": 100.1, "sensor_type": "temperature"}' http://localhost:8000/sensors/devices/
+```
+ Nope ! as you can see if you are using the browser, the server returns something like
+ ```json
+{
+    "non_field_errors": [
+        "Sensor value cannot be grater than 100.0"
+    ]
+}
+```
 
 
 
