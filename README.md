@@ -190,6 +190,24 @@ the preceding command returns a request throttle message after 60 successful req
 {'detail': 'Request was throttled. Expected available in 17 seconds.'}
 {'detail': 'Request was throttled. Expected available in 16 seconds.'}
 ```
+
+### Retrieve sensor data using start_time and end_time
+ToTo retrieve data with GET verb using a starting and ending sensor_reading_time, open the following link on your browser.
+
+[Retrive: http://localhost:8000/sensors/retrieve/](http://localhost:8000/sensors/retrieve/)
+
+Click on Filter button and the following modal will open:
+<img src="https://storage.googleapis.com/josue-kula-static/design_abstract/Filter_data.png" />
+
+Type the sensor type, start_time (datetime), end_time (datetime) use the following format and 
+click submit.
+
+```
+ sensor type: temperature
+ start_time: 2019-09-11 11:20:02
+ end_time: 2019-09-11 11:23:01
+```
+
 ## App Testing
 For this project, I only tested the server side application. I tested urls resolver, Views
 ModelViewSet and data models (entity). To see the test files, find the path below
