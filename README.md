@@ -61,6 +61,7 @@ Attention should also be paid at SECRET_KEY and DEBUG config setting that are ex
 In real production ready application, we have to hide our SECRET_KEY and dynamically switch DEBUG
 value in dev - production environment.
 
+### Dealing secret_key and debug
 ```python
 SECRET_KEY = 'ik!81-q8usbm-oqwui*!oty+^3y$+8q8m#als$$_j)y%667y&5'
 DEBUG = False # Debug mode is turned off by default to suggest production ready
@@ -97,13 +98,34 @@ For sensors application, we have two resources to handle writing and reading fro
 ``` bash
  The first resource http://localhost:8000/sensors/devices/ handles creating new record, getting all sensors data
  and getting a single record using uuid as url parameter
+ # use GET (with uuid), POST, DELETE, and PUT
 ```
 [Devices: http://localhost:8000/sensors/devices/](http://localhost:8000/sensors/devices/)
 ``` bash
  The second resource http://localhost:8000/sensors/devices/ handles data retrieval using
  star_time and date_time
+ # use GET (datetime range ), PUT, and DELETE
 ```
 [Retrive: http://localhost:8000/sensors/retrieve/](http://localhost:8000/sensors/retrieve/)
+#### Note: make sure the project is running before you check the url
+
+### API Utilization
+As soon as you run the application, there's no data insert at migration level. so the device table should be empty
+To confirm, try to get all sensors data using a simple curl command.
+```bash
+ curl -X GET http://localhost:8000/sensors/devices/
+ # returns [] empty list
+```
+Great, Now let create a new record
+```bash
+  curl -X POST -H "Content-Type: application/json" -d '{"sensor_value": 5.0, "sensor_type": "temperature"}' \
+  http://localhost:8000/sensors/devices/
+```
+Notice we have just created a new record using two fields: 
+..* sensor_value which is required, and;
+..* sensor_type which is optional with default value temperature
+
+
 
 
 
