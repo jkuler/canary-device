@@ -92,6 +92,10 @@ perspective. we are using datetime format with timezone.
 ```
 
 ## API Resource and utilization
+### API Resource
+For sensors application, we have two resources to handle writing and reading from the database.
+[Devices: http://localhost:8000/sensors/devices/](http://localhost:8000/sensors/devices/)
+
 
 
 
