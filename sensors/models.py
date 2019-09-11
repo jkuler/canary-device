@@ -30,7 +30,7 @@ class Device(models.Model):
             non_field_errors = e.message_dict[NON_FIELD_ERRORS]
 
     def clean(self, **kwargs):
-        if self.sensor_value >= 100:
+        if self.sensor_value > 100.0:
             raise ValidationError('Sensor value cannot be grater than 100.0')
         else:
             pass

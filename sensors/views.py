@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Device
 from .serializers import DeviceSerializer, DeviceTimeSerializer
 from rest_framework import status
+from django.http import Http404
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from django.views.generic import TemplateView
