@@ -8,7 +8,6 @@ class DeviceModelTest(TestCase):
     def test_Device_Model_has_attributes(self):
         sensor = Device()
         self.assertEqual(sensor.sensor_type, 'temperature')
-        self.assertIsNone(sensor.sensor_value, 'device_value should not be empty')
 
     def test_Can_Device_Retrieve_Data(self):
         device0 = Device.objects.create(sensor_value=2.0, sensor_type='humility')

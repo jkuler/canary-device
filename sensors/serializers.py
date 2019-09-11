@@ -5,7 +5,7 @@ from .models import Device
 class DeviceSerializer(ModelSerializer):
     class Meta:
         model = Device
-        fields = '__all__'
+        fields = ['device_uuid', 'sensor_type', 'sensor_value', 'sensor_reading_time']
 
     def validate(self, attrs):
         instance = Device(**attrs)
@@ -16,4 +16,4 @@ class DeviceSerializer(ModelSerializer):
 class DeviceTimeSerializer(ModelSerializer):
     class Meta:
         model = Device
-        fields = '__all__'
+        fields = ['device_uuid', 'sensor_type', 'sensor_value', 'sensor_reading_time']

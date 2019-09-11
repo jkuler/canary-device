@@ -24,7 +24,7 @@ class Device(models.Model):
 
     def save(self, *args, **kwargs):
         try:
-            self.full_clean()
+            self.clean()
             super(Device, self).save()
         except ValidationError as e:
             non_field_errors = e.message_dict[NON_FIELD_ERRORS]

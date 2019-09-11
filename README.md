@@ -125,7 +125,7 @@ Notice we have just created a new record using two fields:
 * sensor_value which is required, and;
 * sensor_type which is optional with default value temperature
 
-#### Simulating concurrent data upload
+#### Simulating concurrent HTTP requests
 To simulate concurrent requests with constraint on data upload, we create a http client script 
 using a python coroutine module for http client and service called aiohttp.
 To see how it works, we need first to generate 10 sensor value(s) with random sensor_type 
@@ -190,7 +190,8 @@ the preceding command returns a request throttle message after 60 successful req
 {'detail': 'Request was throttled. Expected available in 17 seconds.'}
 {'detail': 'Request was throttled. Expected available in 16 seconds.'}
 ```
-
+## App Testing
+For this project, I only tested the server side. Find the 
 
 
 
