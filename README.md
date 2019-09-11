@@ -182,6 +182,14 @@ requests. In this example, we use the same curl request by increasing the number
 ```bash
  $  ./virtualenv/bin/python http_client.py -n 62 --url http://localhost:8000/sensors/devices/
 ```
+the preceding command returns a request throttle message after 60 successful requests per minute:
+
+```bash
+# As soon as we reache 60 requests per minute, the resource got throttled
+
+{'detail': 'Request was throttled. Expected available in 17 seconds.'}
+{'detail': 'Request was throttled. Expected available in 16 seconds.'}
+```
 
 
 
