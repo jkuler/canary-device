@@ -48,9 +48,9 @@ We have to make sure there's a newly created file named db.sqlite at the current
 ```
 ## Application Configuration
 As you can see at the file requirements .txt, we used django and django-rest-framework to create sensors device app.
-In order to have an ubiquitous Datetime across end-user at different geographical location, we need to configure both
+In order to ubiquitously have the correct Datetime across end-user at different geographical location, we need to configure both
 the server and django project to use UTC TIMEZONE.
-However, for testing purpose, we choose to set the time to New York timezone
+However, for testing purpose, we have decided to set the time to New York timezone
 
 ```python
  # ../sensorsdev/settings.py
