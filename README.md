@@ -75,10 +75,27 @@ REST_FRAMEWORK = {
 
  'DEFAULT_THROTTLE_RATES': {
         'anon': '60/minute'
-    }
+    },
 }
 ```
 ### Dealing with timestamp format
+At the requirement level, the payload appears to have sensor_reading_time to be on unix timestamp format.
+We did not choose that format to facilitate datetime conversion at different geographical location from the end-user 
+perspective. we are using datetime format with timezone.
+
+```python
+  REST_FRAMEWORK = {
+  'DATETIME_FORMAT': "%Y-%m-%dT%H:%M:%S",
+ #...  
+}
+# Note: this format not applied while querying datetime range in django
+```
+
+## API Resource and utilization
+
+
+
+
 
 
 
