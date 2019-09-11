@@ -191,7 +191,23 @@ the preceding command returns a request throttle message after 60 successful req
 {'detail': 'Request was throttled. Expected available in 16 seconds.'}
 ```
 ## App Testing
-For this project, I only tested the server side. Find the 
+For this project, I only tested the server side application. I tested urls resolver, Views
+ModelViewSet and data models (entity). To see the test files, find the path below
+
+```bash
+  youser@hostname:~$ cd sensorsdev/sensors/tests && ls -lrt
+```
+## Run test
+```bash
+   (virualenv)youser@hostname:~$ ./virtualenv/bin/python manage.py test
+```
+```bash
+  ...
+  ----------------------------------------------------------------------
+  Ran 5 tests in 0.033s
+  OK
+
+```
 
 
 
