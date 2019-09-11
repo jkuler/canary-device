@@ -6,6 +6,8 @@
 .block-center {
     margin: auto auto;
     display: block;
+    position: absolute;
+    top: 50%;
     width: 200px;
     height: 200px;
     border: 1px solid #888;
