@@ -20,7 +20,7 @@ async def generate_data(number_of_request, url):
         data.append(insert)
         await asyncio.sleep(.5)
         await post(url, insert)
-    print("Sensor data generation completed")
+    print(f"Operation completed {len(data)} records created")
 
 
 async def post(url, value):
@@ -50,10 +50,18 @@ def bootstrap(arguments):
 
     for option, argument in options:
 
-        if option in ('-n', '--records'):
-            number_of_request = int(argument)
-        elif option in ('-u', '--url') and number_of_request:
-            url = str(argument).lower()
+        if option in ('-n', '--records') and argument:
+            try:
+                number_of_request = int(argument)
+                break
+            except ValueError:
+                print('Number of record should be an integer')
+
+        elif option in ('-u', '--url') and argument:
+            if number_of_request:
+                url = str(argument).lower()
+            else:
+                print(help_message)
         elif option == '-h':
             print(help_message)
         else:

@@ -125,7 +125,7 @@ Notice we have just created a new record using two fields:
 * sensor_value which is required, and;
 * sensor_type which is optional with default value temperature
 
-#### Simulating a concurrent data upload
+#### Simulating concurrent data upload
 To simulate concurrent requests with constraint on data upload, we create a http client script 
 using a python coroutine module for http client and service called aiohttp.
 To see how it works, we need first to generate 10 sensor value (s) with random sensor_type 
@@ -134,7 +134,7 @@ To see how it works, we need first to generate 10 sensor value (s) with random s
 
 ``` bash
 # at the project root : sensordev, type the following command
-(virualenv)youser@hostname:~$ ./virtualenv/bin/python manage.py 
+(virualenv)youser@hostname:~$ ./virtualenv/bin/python http_client.py -n 10 --url http://localhost:8000/sensors/devices/
 ```
 
 
