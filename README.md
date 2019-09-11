@@ -199,8 +199,8 @@ To retrieve data with GET using the starting and ending sensor_reading_time, ope
 Click on Filter button and the following modal will open:
 <img src="https://storage.googleapis.com/josue-kula-static/design_abstract/Filter_data.png" />
 
-Type the sensor type, start_time (datetime), end_time (datetime) use the following format and 
-click submit.
+Type the sensor type, start_time (datetime), end_time (datetime). Use the correct format for datetime as
+describe below.
 
 ```
  sensor type: temperature
