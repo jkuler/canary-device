@@ -8,7 +8,7 @@ The following graphic describes an integration infrastructure design where the a
 
 # Installing packages
 <p>Before running , we need to install required packages from which application component has been built.</p>
-``` console
-git clone https://github.com/jkuler/canary-device sensorsdev
-user@hostname:~$ cd sensorsdev && python3 -m virtualenv
+```
+$ git clone https://github.com/jkuler/canary-device sensorsdev
+$ cd sensorsdev && python3 -m virtualenv
 ```
