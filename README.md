@@ -41,16 +41,16 @@ $ ./virtualenv/bin/python manage.py migrate
 ```
 We have to make sure there's a newly created file named db.sqlite at the current directory
 
-## Running sensor locally
+## Running the App locally
 
 ```bash
 (virualenv)youser@hostname:~$ cd sensorsdev && ./virtualenv/bin/python manage.py runserver
 ```
-## Application config
+## Application Configuration
 As you can see at the file requirements .txt, we used django and django-rest-framework to create sensors device app.
 In order to have an ubiquitous Datetime across end-user at different geographical location, we need to configure both
 the server and django project to use UTC TIMEZONE.
-However, for testing purpose, we choose to set the time at New York
+However, for testing purpose, we choose to set the time to New York timezone
 
 ```python
  # ../sensorsdev/settings.py
@@ -66,7 +66,7 @@ SECRET_KEY = 'ik!81-q8usbm-oqwui*!oty+^3y$+8q8m#als$$_j)y%667y&5'
 DEBUG = False # Debug mode is turned off by default to suggest production ready
 ``` 
 
-Since the REst API resources in the application do not require authentication and the service functionality requires resources to
+Since the Rest API resources do not require authentication and the service functionality requires resources to
 handle many request but not too many, we configured the projects to only accept 60 request per minutes (GET, POST, PUT, DELETE)
 
 ```python
@@ -78,6 +78,9 @@ REST_FRAMEWORK = {
     }
 }
 ```
+### Dealing with timestamp format
+
+
 
 
 
