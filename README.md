@@ -209,7 +209,7 @@ describe below.
 ```
 
 ## App Testing
-For this project, I only tested the server side application. I tested urls resolver, Views
+For this project, I only tested the server side application. I tested urls resolver, Views/
 ModelViewSet and data models (entity). To see the test files, find the path below
 
 ```bash
