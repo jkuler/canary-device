@@ -192,7 +192,7 @@ the preceding command returns a request throttle message after 60 successful req
 ```
 
 ### Retrieve sensor data using start_time and end_time
-To retrieve data with GET verb using a starting and ending sensor_reading_time, open the following link on your browser.
+To retrieve data with GET using the starting and ending sensor_reading_time, open the following link on your browser.
 
 [Retrive: http://localhost:8000/sensors/retrieve/](http://localhost:8000/sensors/retrieve/)
 
