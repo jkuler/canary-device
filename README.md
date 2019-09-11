@@ -94,7 +94,12 @@ perspective. we are using datetime format with timezone.
 ## API Resource and utilization
 ### API Resource
 For sensors application, we have two resources to handle writing and reading from the database.
+``` bash
+ The first resource http://localhost:8000/sensors/devices/ handles getting all sensors data
+ and getting a single record using uuid as url parameter
+```
 [Devices: http://localhost:8000/sensors/devices/](http://localhost:8000/sensors/devices/)
+
 
 
 
