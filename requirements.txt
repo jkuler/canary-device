@@ -5,3 +5,4 @@ django-unixtimestampfield==0.3.9
 djangorestframework==3.10.3
 pytz==2019.2
 sqlparse==0.3.0
+aiohttp[speedups]
