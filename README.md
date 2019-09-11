@@ -118,12 +118,26 @@ To confirm, try to get all sensors data using a simple curl command.
 ```
 Great, Now let create a new record
 ```bash
-  curl -X POST -H "Content-Type: application/json" -d '{"sensor_value": 5.0, "sensor_type": "temperature"}' \
-  http://localhost:8000/sensors/devices/
+  curl -X POST -H "Content-Type: application/json" -d \
+ '{"sensor_value": 5.0, "sensor_type": "temperature"}' http://localhost:8000/sensors/devices/
 ```
 Notice we have just created a new record using two fields: 
-..* sensor_value which is required, and;
-..* sensor_type which is optional with default value temperature
+* sensor_value which is required, and;
+* sensor_type which is optional with default value temperature
+
+#### Simulating a concurrent data upload
+To simulate concurrent requests with constraint on data upload, we create a http client script 
+using a python coroutine module for http client and service called aiohttp.
+To see how it works, we need first to generate 10 sensor value (s) with random sensor_type 
+
+##### Open a new terminal window and type the following ..
+
+``` bash
+# at the project root : sensordev, type the following command
+(virualenv)youser@hostname:~$ ./virtualenv/bin/python manage.py 
+```
+
+
 
 
 
