@@ -50,18 +50,14 @@ def bootstrap(arguments):
 
     for option, argument in options:
 
-        if option in ('-n', '--records') and argument:
+        if option in ('-n', '--records'):
             try:
                 number_of_request = int(argument)
-                break
-            except ValueError:
-                print('Number of record should be an integer')
+            except ValueError as e:
+                print(e)
 
-        elif option in ('-u', '--url') and argument:
-            if number_of_request:
-                url = str(argument).lower()
-            else:
-                print(help_message)
+        elif option in ('-u', '--url') and number_of_request:
+            url = str(argument).lower()
         elif option == '-h':
             print(help_message)
         else:

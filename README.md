@@ -136,7 +136,7 @@ To see how it works, we need first to generate 10 sensor value(s) with random se
 # at the project root (sensorsdev), type the following command
 (virualenv)youser@hostname:~$ ./virtualenv/bin/python http_client.py -n 10 --url http://localhost:8000/sensors/devices/
 ```
-The preceding command generates random temperature and create 10 records on database.
+The preceding command generates random temperature and creates 10 records on database.
 Now, let check to make sure we now have records in the database
 
 ```bash
@@ -167,7 +167,7 @@ Great, we can create new record with sensor_value equals to 100.0. what about 10
   curl -X POST -H "Content-Type: application/json" -d \
   '{"sensor_value": 100.1, "sensor_type": "temperature"}' http://localhost:8000/sensors/devices/
 ```
- Nope ! as you can see if you are using the browser, the server returns something like
+ Nope ! As you can see if you are using the browser, the server result is as follows:
  ```json
 {
     "non_field_errors": [
@@ -175,6 +175,16 @@ Great, we can create new record with sensor_value equals to 100.0. what about 10
     ]
 }
 ```
+### Checking constraint about too many concurrent requests
+In the previous example on concurrent requests, we demonstrated how the application can handle concurrent
+requests. In this example, we use the same curl request by increasing the number of random records per minute.
+
+```bash
+ $  ./virtualenv/bin/python http_client.py -n 62 --url http://localhost:8000/sensors/devices/
+```
+
+
+
 
 
 
