@@ -41,7 +41,7 @@ $ ./virtualenv/bin/python manage.py migrate
 ```
 We have to make sure there's a newly created file named db.sqlite at the current directory
 
-## Running the App locally
+## Running the app locally
 
 ```bash
 (virualenv)youser@hostname:~$ cd sensorsdev && ./virtualenv/bin/python manage.py runserver
