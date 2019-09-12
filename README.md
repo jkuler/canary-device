@@ -1,4 +1,4 @@
-## Device Sensor: Architecture Abstract
+## Sensor Device: Architectural Abstract
 <p>When hundreds of thousands of hardware devices are concurrently uploading sensors data, performance, availability, 
 and scalability are questions that needed to be answered while designing the infrastructure to sustain the system.</p>
 <p>In this scenario, I suggest to deploy the system on cloud service where scalability, and high availability can be provided within minutes.  
@@ -61,7 +61,7 @@ Attention should also be paid at SECRET_KEY and DEBUG config setting that are ex
 In real production ready application, we have to hide our SECRET_KEY and dynamically switch DEBUG
 value in dev - production environment.
 
-### Dealing secret_key and debug
+### Dealing with secret_key and debug
 ```python
 SECRET_KEY = 'ik!81-q8usbm-oqwui*!oty+^3y$+8q8m#als$$_j)y%667y&5'
 DEBUG = False # Debug mode is turned off by default to suggest production ready
