@@ -11,10 +11,10 @@ The following graphic describes an integration infrastructure design where the a
 Before running , we need to install required packages on top of which application components have been built.
 ``` bash
 # Clone the repository
-$ git clone https://github.com/jkuler/canary-device.git sensorsdev
+$ git clone https://github.com/jkuler/canary-device.git
 
 # create a virtual environment
-$ cd sensorsdev && python3 -m venv virtualenv
+$ cd canary-device && python3 -m venv virtualenv
 
 # install packages
 source ./virtualenv/bin/activate && ./virtualenv/bin/python -m pip install -r requirements.txt
