@@ -156,4 +156,3 @@ STATICFILES_DIRS = (
     'public/static'
 )
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'public/static')
