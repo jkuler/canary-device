@@ -64,7 +64,6 @@ value in dev - production environment.
 ### Dealing with secret_key and debug
 ```python
 SECRET_KEY = 'ik!81-q8usbm-oqwui*!oty+^3y$+8q8m#als$$_j)y%667y&5'
-DEBUG = False # Debug mode is turned off by default to suggest production ready
 ``` 
 
 Since the Rest API resources do not require authentication and the service functionality requires resources to
